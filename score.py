@@ -31,11 +31,11 @@ class Score:
         turtle.title(f"Score: {score}")
 
 
-    def increment_score(self, score, increment):
+    def increment_score(self):
         """ Increments score by what programmer wants increment to be """
 
-        score += increment
-        return score
+        self.score += self.increment
+        return self.score
 
 
     def text_at_xy(self, x, y, text):
