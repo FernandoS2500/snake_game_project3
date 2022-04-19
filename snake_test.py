@@ -1,6 +1,5 @@
 """
 Temp file for me to test snake class methods
-
 """
 
 from snake import Snake
@@ -11,12 +10,21 @@ import time
 from food import Food
 import random
 
+import score
+
 # setup main window
 main_screen = Screen()
 main_screen.setup(width=500, height=500)
 main_screen.bgcolor("white")
 main_screen.title("Team 3 Snake Game")
 main_screen.tracer(0)
+
+#Create score
+intial_score = 0
+increment = 1
+score.Score(intial_score, increment)
+score.Score.show_score()
+
 
 # creates the snake object
 viper_attributes = Snake()
@@ -62,6 +70,9 @@ while True:
 
     # Michelles Code
     # Moving the food to a random location
+
+    #print(food.track_location())
+    #print(viper_head.distance(food.track_location()))
 
     if viper_head.distance(food.track_location()) < 20:
         print("IT worked")
