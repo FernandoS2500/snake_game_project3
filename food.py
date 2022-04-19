@@ -51,7 +51,8 @@ class Food:
 
         """ Returns the x, y position of the food. """
 
-        return print(self.food.pos())
+        return self.food.pos()
+
 
 def main():
     
