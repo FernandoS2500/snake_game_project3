@@ -45,7 +45,7 @@ class Score:
         self.turtle.goto(x, y)
         self.turtle.write(text)
 
-
+"""
 #Coding below tests class
 #Brought class into my coding
 self = Score(0,10)
@@ -70,3 +70,4 @@ if score == 100:
     Score.text_at_xy(self,0,0,"You won!")
 
 turtle.done()
+"""
