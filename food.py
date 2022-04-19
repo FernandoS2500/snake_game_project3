@@ -53,7 +53,6 @@ class Food:
 
         return self.food.pos()
 
-
 def main():
     
     """ Testing if the methods work properly."""
@@ -68,7 +67,7 @@ def main():
     randomloc = Food.random_location(food,0,100,0,100)
 
     # Tracking the location of the food and printing it out.
-    Food.track_location(food)
+    print(Food.track_location(food))
 
 if __name__ == "__main__":
     main()

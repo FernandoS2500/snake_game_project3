@@ -114,11 +114,10 @@ class SnakeCollision:
 
     def wall_collision(self):
         """ checks if snake has run into the wall"""
-        # checks if the snake has gone out of bounds by checking the xcore and ycor values
         if self.xcor > 230 or self.xcor < -230 or self.ycor > 230 or self.ycor < -230:
             # update with different option of losing
             print("You have lost the game")
-            #quit()
+            quit()
 
     def self_collision(self):
         """ Checks if snake has run into itself. """
@@ -127,15 +126,6 @@ class SnakeCollision:
             if self.xcor != 0 and self.body_length > 0:
                 # compares distance of snake ahead and snake body
                 if body_sec.distance(self.viper_head) < 10:
-                    print(body_sec.distance(self.viper_head))
                     # update with different option of losing
                     print("You have lost the game")
-                    #quit()
-
-    def food_collision(self, location):
-        """ Checks for collision with food. """
-
-        print(location)
-        #if self.viper_head.distance(location) < 10:
-        #    print("Extra section")
-
+                    quit()
