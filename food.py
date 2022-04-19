@@ -11,21 +11,15 @@ from turtle import Turtle
 
 class Food:
 
-    food = Turtle()
-    color = random.choice(['red', 'blue', 'green'])
-    ypos = 0
-    xpos = 50
-    shape = random.choice(['triangle', 'square', 'circle'])
-
-    def __init__(self, food, xpos, ypos, color, shape):
+    def __init__(self):
 
         """ Each attribute of the food class is set to a default value. """
         
-        self.food = food
-        self.xpos = xpos
-        self.ypos = ypos
-        self.color = color
-        self.shape = shape
+        self.food = Turtle()
+        self.xpos = 50
+        self.ypos = 0
+        self.color = random.choice(['red', 'blue', 'green'])
+        self.shape = random.choice(['triangle', 'circle', 'square'])
     
     def set_food(self):
 
