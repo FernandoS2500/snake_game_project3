@@ -32,7 +32,7 @@ viper_body = viper_attributes.snake_body_creation()
 
 # Michelles code
 # Setting up the food object.
-food = Food(Turtle(), 0, 100, "red", "circle")
+food = Food()
 
 # Applying the attributes to the food.
 movedto = Food.set_food(food)
