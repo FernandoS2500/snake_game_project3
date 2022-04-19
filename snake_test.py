@@ -19,10 +19,9 @@ main_screen.title("Team 3 Snake Game")
 main_screen.tracer(0)
 
 # Create score
-intial_score = 0
-increment = 1
-
-scores = Score(intial_score, increment)
+self = Score(0,10)
+Score.show_score(self,0)
+score = self.score
 
 # creates the snake object
 viper_attributes = Snake()
@@ -45,9 +44,10 @@ main_screen.onkey(viper_attributes.down, "Down")
 main_screen.onkey(viper_attributes.right, "Right")
 main_screen.onkey(viper_attributes.left, "Left")
 
+
 # main game loop
 while True:
-    scores.show_score(intial_score)
+
     # sets the new x and y cor
     viper_head.setx(viper_attributes.prep_move_x(viper_attributes.direction, viper_head.xcor()))
     viper_head.sety(viper_attributes.prep_move_y(viper_attributes.direction, viper_head.ycor()))
@@ -75,13 +75,16 @@ while True:
         Food.random_location(food, 0, 240, 0, 240)
         # creates the snake body object
         viper_body = viper_attributes.snake_body_creation()
-        new_score = scores.increment_score()
-        scores.show_score(new_score)
+        score = Score.increment_score(self,score,10)
+        Score.show_score(self,score)
 
     # if snake_position[0] == fruit_position[0] and snake_position[1] == fruit_position[1]:
 
     # print(food.xpos)
     # SnakeCollision.food_collision(food.xpos)
+    if score == 50:
+        Score.text_at_xy(self,0,0,"You won!")
+        break
 
     # delayed used to slow down game
     delay = 0.1
