@@ -63,9 +63,6 @@ while True:
     # Michelles Code
     # Moving the food to a random location
 
-    #print(food.track_location())
-    #print(viper_head.distance(food.track_location()))
-
     if viper_head.distance(food.track_location()) < 20:
         print("IT worked")
         Food.random_location(food, 0, 240, 0, 240)
