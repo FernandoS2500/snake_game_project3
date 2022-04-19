@@ -5,8 +5,11 @@ Temp file for me to test snake class methods
 
 from snake import Snake
 from snake import SnakeCollision
-from turtle import Screen
+from turtle import Screen, Turtle
 import time
+
+from food import Food
+import random
 
 # setup main window
 main_screen = Screen()
@@ -22,6 +25,13 @@ viper_head = viper_attributes.snake_creation()
 # creates the snake body object
 viper_body = viper_attributes.snake_body_creation()
 
+# Michelles code
+# Setting up the food object.
+food = Food(Turtle(), 0, 100, "red", "circle")
+
+# Applying the attributes to the food.
+movedto = Food.set_food(food)
+
 # binds keys
 main_screen.listen()
 main_screen.onkey(viper_attributes.up, "Up")
@@ -29,8 +39,7 @@ main_screen.onkey(viper_attributes.down, "Down")
 main_screen.onkey(viper_attributes.right, "Right")
 main_screen.onkey(viper_attributes.left, "Left")
 
-# used for viper body sections
-key = 5
+
 
 # main game loop
 while True:
@@ -51,11 +60,20 @@ while True:
     # moves the snake body sections around
     viper_attributes.move_body_sections(viper_body, viper_head)
 
-    # temp way to add extra sections to snake
-    while key < 30:
+    # Michelles Code
+    # Moving the food to a random location
+
+    if viper_head.distance(food.track_location()) < 20:
+        print("IT worked")
+        Food.random_location(food, 0, 240, 0, 240)
         # creates the snake body object
         viper_body = viper_attributes.snake_body_creation()
-        key = key + 1
+
+    # if snake_position[0] == fruit_position[0] and snake_position[1] == fruit_position[1]:
+
+    # print(food.xpos)
+    # SnakeCollision.food_collision(food.xpos)
+
 
     # delayed used to slow down game
     delay = 0.1
