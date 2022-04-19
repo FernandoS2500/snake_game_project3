@@ -21,11 +21,11 @@ class Food:
 
         """ Each attribute of the food class is set to a default value. """
         
-        food = food
-        xpos = xpos
-        ypos = ypos
-        color = color
-        shape = shape
+        self.food = food
+        self.xpos = xpos
+        self.ypos = ypos
+        self.color = color
+        self.shape = shape
     
     def set_food(self):
 
