@@ -6,10 +6,10 @@ File: snake.py
  Description:  The snake.py file has two classes Snake and SnakeCollision. Snake allows the
  software to create a snake using turtle and move it around. SnakeCollision checks if the snake has
  run into itself or  the wall.
-
 """
 
 from turtle import Turtle
+import turtle
 
 # list for body sections , used with snake_body_creation method
 body_sections = []
@@ -115,9 +115,7 @@ class SnakeCollision:
     def wall_collision(self):
         """ checks if snake has run into the wall"""
         if self.xcor > 230 or self.xcor < -230 or self.ycor > 230 or self.ycor < -230:
-            # update with different option of losing
-            print("You have lost the game")
-            quit()
+            return True
 
     def self_collision(self):
         """ Checks if snake has run into itself. """
@@ -127,5 +125,4 @@ class SnakeCollision:
                 # compares distance of snake ahead and snake body
                 if body_sec.distance(self.viper_head) < 10:
                     # update with different option of losing
-                    print("You have lost the game")
-                    quit()
+                    return True
