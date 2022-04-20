@@ -19,7 +19,7 @@ class Snake:
     """ Snake class has the basic functions to create and move a snake """
 
     def __init__(self, length=1, color="red", move="right", shape="square", size=0.5, position=(0, 0),
-                 direction="right", speed=1):
+                 direction="stop", speed=1):
         self.length = length
         self.color = color
         self.shape = shape
@@ -55,6 +55,11 @@ class Snake:
 
         return body_sections
 
+    def clear_body(self):
+
+        body_sections.clear()
+
+
     # stores the direction from user input  and stops snake from going in reverse.
     def up(self):
         if self.direction != "down":
@@ -72,6 +77,9 @@ class Snake:
         if self.direction != "right":
             self.direction = "left"
 
+    def stop(self):
+        self.direction = "stop"
+
     # calculates a new x and y cord variable and passes it back
     def prep_move_y(self, direction, cord_y):
         if direction == "up":
@@ -79,6 +87,9 @@ class Snake:
             return cord_y
         elif direction == "down":
             cord_y = cord_y - 12
+            return cord_y
+        elif direction == "stop":
+            print("stop")
             return cord_y
         else:
             return cord_y
@@ -90,12 +101,14 @@ class Snake:
         elif direction == "left":
             cord_x = cord_x - 12
             return cord_x
+        elif direction == "stop":
+            return cord_x
         else:
             return cord_x
 
     def move_body_sections(self, viper_body, viper_head):
         """ Reverses the order of segments and move the first section to the front"""
-        for section in range(len(viper_body) - 1, 0, -1):
+        for section in reversed(range(len(viper_body))):
             viper_body[section].goto(viper_body[section - 1].xcor(), viper_body[section - 1].ycor())
 
         if len(viper_body) > 0:

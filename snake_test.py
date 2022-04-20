@@ -17,30 +17,24 @@ def snake_game():
     main_screen.bgcolor("white")
     main_screen.tracer(0)
 
-
     # Create score
-    self = Score(0,10)
-    Score.show_score(self,0)
+    self = Score(0, 10)
+    Score.show_score(self, 0)
     score = self.score
-
 
     # creates the snake object
     viper_attributes = Snake()
     viper_head = viper_attributes.snake_creation()
 
-
     # creates the snake body object
     viper_body = viper_attributes.snake_body_creation()
-
 
     # Michelles code
     # Setting up the food object.
     food = Food()
 
-
     # Applying the attributes to the food.
     movedto = Food.set_food(food)
-
 
     # binds keys
     main_screen.listen()
@@ -49,12 +43,11 @@ def snake_game():
     main_screen.onkey(viper_attributes.right, "Right")
     main_screen.onkey(viper_attributes.left, "Left")
 
-
     # main game loop
     while True:
 
-
         # sets the new x and y cor
+        print(viper_attributes.direction)
         viper_head.setx(viper_attributes.prep_move_x(viper_attributes.direction, viper_head.xcor()))
         viper_head.sety(viper_attributes.prep_move_y(viper_attributes.direction, viper_head.ycor()))
 
@@ -64,16 +57,21 @@ def snake_game():
         # Checks for collision into wall
         collision = SnakeCollision(viper_head.xcor(), viper_head.ycor(), len(viper_body), viper_body, viper_head)
         if collision.wall_collision() == True:
+            main_screen.clear()
+            viper_attributes.clear_body()
+
             #Score.text_at_xy(self,0,0,"You lost!")
             #Score.text_at_xy(self,0,-50,"Click to play it again")
             food.hide_food()
             snake_game()
-    
 
         # checks for collision into self
         if collision.self_collision() == True:
-            #Score.text_at_xy(self,0,0,"You lost!")
-            #Score.text_at_xy(self,0,-50,"Click to play it again")
+            main_screen.clear()
+            viper_attributes.clear_body()
+
+            # Score.text_at_xy(self,0,0,"You lost!")
+            # Score.text_at_xy(self,0,-50,"Click to play it again")
             food.hide_food()
             snake_game()
 
@@ -86,25 +84,19 @@ def snake_game():
         # print(viper_head.distance(food.track_location()))
 
         if viper_head.distance(food.track_location()) < 20:
-            print("IT worked")
             Food.random_location(food, 0, 240, 0, 240)
             # creates the snake body object
             viper_body = viper_attributes.snake_body_creation()
-            score = Score.increment_score(self,score,10)
-            Score.show_score(self,score)
+            score = Score.increment_score(self, score, 10)
+            Score.show_score(self, score)
 
-        # if snake_position[0] == fruit_position[0] and snake_position[1] == fruit_position[1]:
-
-        # print(food.xpos)
-        # SnakeCollision.food_collision(food.xpos)
         if score == 1000:
-            Score.text_at_xy(self,0,0,"You won!")
-            Score.text_at_xy(self,0,-50,"Click to play it again")
+            Score.text_at_xy(self, 0, 0, "You won!")
+            Score.text_at_xy(self, 0, -50, "Click to play it again")
 
         # delayed used to slow down game
         delay = 0.1
         time.sleep(delay)
-    
 
 
 snake_game()
