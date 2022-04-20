@@ -46,13 +46,19 @@ class Food:
         """ Returns the x, y position of the food. """
 
         return self.food.pos()
+    
+    def hide_food(self):
+
+        """ Hides the food from the screen. """
+
+        self.food.hideturtle()
 
 def main():
     
     """ Testing if the methods work properly."""
 
     # Setting up the food object.
-    food = Food(Turtle(), 0, 50, "red", "circle")
+    food = Food()
 
     # Applying the attributes to the food.
     movedto = Food.set_food(food)
