@@ -2,7 +2,7 @@
 File: food.py
 Team No.: 3
 Author: Michelle Bang
-Date completed: 04/17/2022
+Date completed: 04/21/2022
 Description: The food class for the snake game. 
 """
 
@@ -15,37 +15,38 @@ class Food:
 
         """ Each attribute of the food class is set to a default value. """
         
-        self.food = Turtle()
-        self.xpos = 50
-        self.ypos = 0
-        self.color = random.choice(['red', 'blue', 'green'])
-        self.shape = random.choice(['triangle', 'circle', 'square'])
+        self.food = Turtle() # The food is a turtle.
+        self.xpos = 50 # Default x position is at 50.
+        self.ypos = 0 # Default y position is at 0.
+        self.color = random.choice(['red', 'blue', 'green']) # Color is a random choice between 3 colors.
+        self.shape = random.choice(['triangle', 'circle', 'square']) # Shape is a random choice between 3 shapes.
     
     def set_food(self):
 
         """ Sets the basic features and attributes of the food. """
-
+        
+        # All the default attributes are actually implemented to the food turtle.
         food = self.food
-        food.speed(0)
+        food.speed(0) 
         food.color(self.color)
         food.shape(self.shape)
-        food.penup()
+        food.penup() 
         food.goto(self.xpos, self.ypos)
 
     def random_location(self, xmin, xmax, ymin, ymax):
 
         """ Moves the food to a random location. """
 
-        x = random.randint(xmin, xmax)
-        y = random.randint(ymin, ymax)
+        x = random.randint(xmin, xmax) # Random x position is chosen from the two values the user can input.
+        y = random.randint(ymin, ymax) # Random y position is chosen from the two values the the user can input.
         
-        return self.food.goto(x, y)
+        return self.food.goto(x, y) # Food goes to that random coordinate.
 
     def track_location(self):
 
         """ Returns the x, y position of the food. """
 
-        return self.food.pos()
+        return self.food.pos() 
     
     def hide_food(self):
 
