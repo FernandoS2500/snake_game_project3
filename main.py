@@ -91,6 +91,8 @@ def snake_game():
             # Score.text_at_xy(self, 0, 0, "You lost!")
             # Score.text_at_xy(self, 0, -50, "Click to play it again")
             options(0)
+            time.sleep(2)
+            
         # checks for collision into self
         if collision.self_collision():
             main_screen.clear()
@@ -100,6 +102,7 @@ def snake_game():
             #Score.text_at_xy(self, 0, 0, "You lost!")
             #Score.text_at_xy(self, 0, -50, "Click to play it again")
             options(0)
+            time.sleep(2)
 
         # moves the snake body sections around
         viper_attributes.move_body_sections(viper_body, viper_head)
@@ -123,6 +126,7 @@ def snake_game():
             # Score.text_at_xy(self, 0, 0, "You won!")
             # Score.text_at_xy(self, 0, -50, "Click to play it again")
             options(1)
+            time.sleep(2)
         # delayed used to slow down game
         delay = 0.1
         time.sleep(delay)
