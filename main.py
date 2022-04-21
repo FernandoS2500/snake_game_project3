@@ -116,7 +116,7 @@ def snake_game():
             Score.show_score(self, score)
 
         # winning
-        if score == 1000:
+        if score == 500:
             main_screen.clear()
             viper_attributes.clear_body()
             food.hide_food()
