@@ -10,6 +10,9 @@ from food import Food
 from score import Score
 
 
+def button():
+    snake_game()
+
 def snake_game():
     # setup main window
     main_screen = Screen()
@@ -42,12 +45,14 @@ def snake_game():
     main_screen.onkey(viper_attributes.down, "Down")
     main_screen.onkey(viper_attributes.right, "Right")
     main_screen.onkey(viper_attributes.left, "Left")
+    main_screen.onKey(button(), "r")
+
+
 
     # main game loop
     while True:
 
         # sets the new x and y cor
-        print(viper_attributes.direction)
         viper_head.setx(viper_attributes.prep_move_x(viper_attributes.direction, viper_head.xcor()))
         viper_head.sety(viper_attributes.prep_move_y(viper_attributes.direction, viper_head.ycor()))
 
@@ -56,24 +61,26 @@ def snake_game():
 
         # Checks for collision into wall
         collision = SnakeCollision(viper_head.xcor(), viper_head.ycor(), len(viper_body), viper_body, viper_head)
-        if collision.wall_collision() == True:
+        if collision.wall_collision():
             main_screen.clear()
             viper_attributes.clear_body()
-
-            #Score.text_at_xy(self,0,0,"You lost!")
-            #Score.text_at_xy(self,0,-50,"Click to play it again")
             food.hide_food()
-            snake_game()
+            Score.text_at_xy(self,0,0,"You lost!")
+            Score.text_at_xy(self,0,-50,"Click to play it again")
+            Turtle.onclick(button(), 1)
+
 
         # checks for collision into self
         if collision.self_collision() == True:
             main_screen.clear()
             viper_attributes.clear_body()
-
-            # Score.text_at_xy(self,0,0,"You lost!")
-            # Score.text_at_xy(self,0,-50,"Click to play it again")
             food.hide_food()
-            snake_game()
+
+            Score.text_at_xy(self,0,0,"You lost!")
+            Score.text_at_xy(self,0,-50,"Click to play it again")
+
+
+
 
         # moves the snake body sections around
         viper_attributes.move_body_sections(viper_body, viper_head)
@@ -87,16 +94,23 @@ def snake_game():
             Food.random_location(food, 0, 240, 0, 240)
             # creates the snake body object
             viper_body = viper_attributes.snake_body_creation()
+            # moves new body correct location
+            viper_attributes.move_body_sections(viper_body, viper_head)
+            # score updating
             score = Score.increment_score(self, score, 10)
             Score.show_score(self, score)
 
-        if score == 1000:
+        if score == 20:
+            main_screen.clear()
+            viper_attributes.clear_body()
             Score.text_at_xy(self, 0, 0, "You won!")
             Score.text_at_xy(self, 0, -50, "Click to play it again")
+
 
         # delayed used to slow down game
         delay = 0.1
         time.sleep(delay)
+
 
 
 snake_game()

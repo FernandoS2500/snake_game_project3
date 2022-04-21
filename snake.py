@@ -9,7 +9,6 @@ File: snake.py
 """
 
 from turtle import Turtle
-import turtle
 
 # list for body sections , used with snake_body_creation method
 body_sections = []
@@ -19,7 +18,7 @@ class Snake:
     """ Snake class has the basic functions to create and move a snake """
 
     def __init__(self, length=1, color="red", move="right", shape="square", size=0.5, position=(0, 0),
-                 direction="stop", speed=1):
+                 direction="right", speed=1):
         self.length = length
         self.color = color
         self.shape = shape
@@ -58,7 +57,6 @@ class Snake:
     def clear_body(self):
 
         body_sections.clear()
-
 
     # stores the direction from user input  and stops snake from going in reverse.
     def up(self):
