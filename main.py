@@ -97,8 +97,8 @@ def snake_game():
             viper_attributes.clear_body()
             food.hide_food()
 
-            Score.text_at_xy(self, 0, 0, "You lost!")
-            Score.text_at_xy(self, 0, -50, "Click to play it again")
+            #Score.text_at_xy(self, 0, 0, "You lost!")
+            #Score.text_at_xy(self, 0, -50, "Click to play it again")
             options(0)
 
         # moves the snake body sections around
