@@ -15,7 +15,7 @@ from food import Food
 from score import Score
 
 
-def options(lost):
+def options(lost, main_screen):
     # create buttons
     button_yes = Turtle()
     button_yes.hideturtle()
@@ -37,6 +37,8 @@ def options(lost):
 
     turtle.onscreenclick(screenclick, 1)
     turtle.listen()
+
+    main_screen.mainloop()
 
 
 def snake_game():
@@ -90,8 +92,8 @@ def snake_game():
             food.hide_food()
             # Score.text_at_xy(self, 0, 0, "You lost!")
             # Score.text_at_xy(self, 0, -50, "Click to play it again")
-            options(0)
-            time.sleep(2)
+            options(0, main_screen)
+
             
         # checks for collision into self
         if collision.self_collision():
@@ -101,8 +103,8 @@ def snake_game():
 
             #Score.text_at_xy(self, 0, 0, "You lost!")
             #Score.text_at_xy(self, 0, -50, "Click to play it again")
-            options(0)
-            time.sleep(2)
+            options(0, main_screen)
+
 
         # moves the snake body sections around
         viper_attributes.move_body_sections(viper_body, viper_head)
@@ -125,15 +127,13 @@ def snake_game():
             food.hide_food()
             # Score.text_at_xy(self, 0, 0, "You won!")
             # Score.text_at_xy(self, 0, -50, "Click to play it again")
-            options(1)
-            time.sleep(2)
+            options(0, main_screen)
         # delayed used to slow down game
         delay = 0.1
         time.sleep(delay)
 
 
-def play_again():
-    snake_game()
+
 
 
 if __name__ == '__main__':
