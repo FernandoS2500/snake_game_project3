@@ -55,31 +55,33 @@ class Snake:
         return body_sections
 
     def clear_body(self):
-
+        """ Methods empty the body_section list"""
         body_sections.clear()
 
     # stores the direction from user input  and stops snake from going in reverse.
     def up(self):
+        """ Changes the value of self.direction to up"""
         if self.direction != "down":
             self.direction = "up"
 
     def down(self):
+        """ Changes the value of self.direction to down"""
         if self.direction != "up":
             self.direction = "down"
 
     def right(self):
+        """ Changes the value of self.direction to right"""
         if self.direction != "left":
             self.direction = "right"
 
     def left(self):
+        """ Changes the value of self.direction to left"""
         if self.direction != "right":
             self.direction = "left"
 
-    def stop(self):
-        self.direction = "stop"
-
     # calculates a new x and y cord variable and passes it back
     def prep_move_y(self, direction, cord_y):
+        """ Function checks direction and updates y cord in response"""
         if direction == "up":
             cord_y = cord_y + 12
             return cord_y
@@ -93,6 +95,7 @@ class Snake:
             return cord_y
 
     def prep_move_x(self, direction, cord_x):
+        """ Function checks direction and updates x cord in response"""
         if direction == "right":
             cord_x = cord_x + 12
             return cord_x
