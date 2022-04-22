@@ -19,10 +19,10 @@ def options(lost, main_screen):
     # create buttons
     button_yes = Turtle()
     button_yes.hideturtle()
-
     button_yes.penup()
     button_yes.goto(0, 0)
 
+    # Decides what text to display based on int.
     if lost == 0:
         button_yes.write("  You have Lost click on screen to Play again!!", align="center",
                          font=("arial", 15, "normal"))
@@ -30,11 +30,13 @@ def options(lost, main_screen):
         button_yes.write("  You have Won click on screen to Play again!!", align="center",
                          font=("arial", 15, "normal"))
 
+    # checks if the x and y coordinates of the mouse click are in an acceptable area.
     def screenclick(x, y):
         if -300 < x < 300 and -300 < y < 300:
             button_yes.clear()
             snake_game()
 
+    # Grabs the x and y coordinates and passes them to function.
     turtle.onscreenclick(screenclick, 1)
     turtle.listen()
 
@@ -60,7 +62,6 @@ def snake_game():
     # creates the snake body object
     viper_body = viper_attributes.snake_body_creation()
 
-    # Michelles code
     # Setting up the food object.
     food = Food()
 
@@ -100,7 +101,6 @@ def snake_game():
             main_screen.clear()
             viper_attributes.clear_body()
             food.hide_food()
-
             #Score.text_at_xy(self, 0, 0, "You lost!")
             #Score.text_at_xy(self, 0, -50, "Click to play it again")
             options(0, main_screen)
@@ -128,6 +128,7 @@ def snake_game():
             # Score.text_at_xy(self, 0, 0, "You won!")
             # Score.text_at_xy(self, 0, -50, "Click to play it again")
             options(1, main_screen)
+
         # delayed used to slow down game
         delay = 0.1
         time.sleep(delay)
