@@ -26,3 +26,10 @@ Food Class development documentation:
 - Default position exists -> position is randomly changed after the food is eaten by the snake
 - Can track the location of the food with a method in class
 - Added a method where the food can be hidden
+
+Snake Class development documentation:
+- Created snake class that would allow you to create the snake and its attributes. 
+- created methods that would allow me to add new body sections and move the snake around.
+- Later  added another class in snake.py  to take care of  collisions.
+- added  a method to clear out the body list
+
