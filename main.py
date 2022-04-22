@@ -127,7 +127,7 @@ def snake_game():
             food.hide_food()
             # Score.text_at_xy(self, 0, 0, "You won!")
             # Score.text_at_xy(self, 0, -50, "Click to play it again")
-            options(0, main_screen)
+            options(1, main_screen)
         # delayed used to slow down game
         delay = 0.1
         time.sleep(delay)
