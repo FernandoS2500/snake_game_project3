@@ -19,10 +19,10 @@ def options(lost, main_screen):
     # create buttons
     button_yes = Turtle()
     button_yes.hideturtle()
+
     button_yes.penup()
     button_yes.goto(0, 0)
 
-    # Decides what text to display based on what int was passed
     if lost == 0:
         button_yes.write("  You have Lost click on screen to Play again!!", align="center",
                          font=("arial", 15, "normal"))
@@ -30,13 +30,11 @@ def options(lost, main_screen):
         button_yes.write("  You have Won click on screen to Play again!!", align="center",
                          font=("arial", 15, "normal"))
 
-    # screenclick checks if the input x and y  are in the allowed area, if so runs the functions
     def screenclick(x, y):
         if -300 < x < 300 and -300 < y < 300:
             button_yes.clear()
             snake_game()
 
-    # onscreen grabs the  x and y click coordinates and pass them to function
     turtle.onscreenclick(screenclick, 1)
     turtle.listen()
 
@@ -62,6 +60,7 @@ def snake_game():
     # creates the snake body object
     viper_body = viper_attributes.snake_body_creation()
 
+    # Michelles code
     # Setting up the food object.
     food = Food()
 
@@ -78,7 +77,7 @@ def snake_game():
     # main game loop
     while True:
 
-        # sets the new x and y cor for snake head
+        # sets the new x and y cor
         viper_head.setx(viper_attributes.prep_move_x(viper_attributes.direction, viper_head.xcor()))
         viper_head.sety(viper_attributes.prep_move_y(viper_attributes.direction, viper_head.ycor()))
 
@@ -91,20 +90,27 @@ def snake_game():
             main_screen.clear()
             viper_attributes.clear_body()
             food.hide_food()
+            # Score.text_at_xy(self, 0, 0, "You lost!")
+            # Score.text_at_xy(self, 0, -50, "Click to play it again")
             options(0, main_screen)
 
+            
         # checks for collision into self
         if collision.self_collision():
             main_screen.clear()
             viper_attributes.clear_body()
             food.hide_food()
+
+            #Score.text_at_xy(self, 0, 0, "You lost!")
+            #Score.text_at_xy(self, 0, -50, "Click to play it again")
             options(0, main_screen)
+
 
         # moves the snake body sections around
         viper_attributes.move_body_sections(viper_body, viper_head)
 
+        # Moving the food to a random location
         if viper_head.distance(food.track_location()) < 20:
-            # Moving the food to a random location
             Food.random_location(food, -220, 220, -220, 220)
             # creates the snake body object
             viper_body = viper_attributes.snake_body_creation()
@@ -119,11 +125,15 @@ def snake_game():
             main_screen.clear()
             viper_attributes.clear_body()
             food.hide_food()
+            # Score.text_at_xy(self, 0, 0, "You won!")
+            # Score.text_at_xy(self, 0, -50, "Click to play it again")
             options(1, main_screen)
-
         # delayed used to slow down game
         delay = 0.1
         time.sleep(delay)
+
+
+
 
 
 if __name__ == '__main__':
