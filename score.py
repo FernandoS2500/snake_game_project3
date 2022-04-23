@@ -2,7 +2,7 @@
 File: score.py
 Team No.: 3
 Author name: Eduarda (Duda) Reolon
-Date completed: 04/18/2022
+Date completed: 04/17/2022
 Description: This program is a class for the score of a snake game.
 Testing: The testing for this file was done after the class definition
 """
